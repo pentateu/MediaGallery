@@ -1,4 +1,4 @@
-package com.veinhorn.example;
+package nz.co.iswe.android.example;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

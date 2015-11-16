@@ -1,4 +1,4 @@
-package com.veinhorn.scrollgalleryview;
+package nz.co.iswe.android.mediagallery;
 
 import android.content.Intent;
 import android.os.Bundle;

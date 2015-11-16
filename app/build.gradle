@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.veinhorn.scrollgalleryview"
+        applicationId "nz.co.iswe.android.mediagallery"
         minSdkVersion 10
         targetSdkVersion 23
         versionCode 2
