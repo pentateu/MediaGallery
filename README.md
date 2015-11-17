@@ -1,27 +1,26 @@
-# ScrollGalleryView
+# Media Gallery
 
-Android library for creating image gallery with thumbnails on bottom of the screen. Just add your images using simple API.
+Android library for displaying images and videos in a media gallery with thumbnails on bottom of the screen. 
+Just add your media using a simple API.
 
-![ScrollGalleryView](http://i.imgur.com/xrBt4Xx.gif)
+This project was forked and inspired by http://github.com/VEINHORN/ScrollGalleryView
+
+![Media Gallery](http://i.imgur.com/xrBt4Xx.gif)
 
 ##Features
 - Easy way to select images in gallery (thumbnails)
 - Zooming
 - Simple API
+- Video support
 - Thumbnail borders
-
-## Sample application
-The sample application published on Google Play.
-
-[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=com.veinhorn.scrollgalleryview)
 
 ##Usage
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.veinhorn.scrollgalleryview.ScrollGalleryView
-        android:id="@+id/scroll_gallery_view"
+    <nz.co.iswe.android.mediagallery.MediaGalleryView
+        android:id="@+id/media_gallery_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000"/>
@@ -30,25 +29,30 @@ The sample application published on Google Play.
 
 ```java
 public class MainActivity extends FragmentActivity {
-    private ScrollGalleryView scrollGalleryView;
+    private MediaGalleryView mMediaGallery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        scrollGalleryView = (ScrollGalleryView)findViewById(R.id.scroll_gallery_view);
-        scrollGalleryView
+        mMediaGalleryView = (MediaGalleryView) findViewById(R.id.scroll_gallery_view);
+        mMediaGalleryView
                 .setThumbnailSize(100)
                 .setZoom(true)
                 .setFragmentManager(getSupportFragmentManager())
-                .addImage(R.drawable.wallpaper1)
-                .addImage(R.drawable.wallpaper2)
-                .addImage(R.drawable.wallpaper3)
-                .addImage(R.drawable.wallpaper4)
-                .addImage(R.drawable.wallpaper5)
-                .addImage(R.drawable.wallpaper6)
-                .addImage(convertDrawableToBitmap(R.drawable.wallpaper7))
+                //load a bitmap directly
+                .addMedia(MediaInfo.imageLoader(bitmap))
+                //provide your own loader
+                .addMedia(MediaInfo.mediaLoader(new MediaInfo.MediaLoader() {
+                    @Override
+                    public Bitmap loadBitmap(Activity activity) {
+                        return convertDrawableToBitmap(R.drawable.wallpaper3);
+                    }
+                }))
+                //load a video from a remote or Local file URL
+                .addMedia(MediaInfo
+                        .url("http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4"))
                 .setCurrentItem(2);
     }
 
@@ -61,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 
 ## Gradle integration
 ```gradle
-compile 'com.veinhorn.scrollgalleryview:library:1.0.3'
+compile 'nz.co.iswe.android.mediagallery:library:1.0.0'
 ```
 
 ## Dependencies
@@ -71,7 +75,7 @@ compile 'com.veinhorn.scrollgalleryview:library:1.0.3'
 
 ## License
 
-    Copyright 2015, 2015 Boris Korogvich
+    Copyright 2015
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
