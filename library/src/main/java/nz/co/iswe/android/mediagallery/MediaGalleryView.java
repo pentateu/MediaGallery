@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by veinhorn on 6.8.15.
  */
-public class ScrollGalleryView extends LinearLayout {
+public class MediaGalleryView extends LinearLayout {
     private FragmentManager fragmentManager;
     private Context context;
     private Point displayProps;
@@ -45,7 +45,7 @@ public class ScrollGalleryView extends LinearLayout {
     private List<MediaInfo> mListOfMedia;
 
 
-    public ScrollGalleryView(Context context, AttributeSet attrs) {
+    public MediaGalleryView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         mListOfMedia = new ArrayList<>();
@@ -62,13 +62,13 @@ public class ScrollGalleryView extends LinearLayout {
                 displayProps.x / 2, 0);
     }
 
-    public ScrollGalleryView setFragmentManager(FragmentManager fragmentManager) {
+    public MediaGalleryView setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
         initializeViewPager();
         return this;
     }
 
-    public ScrollGalleryView addMedia(MediaInfo mediaInfo) {
+    public MediaGalleryView addMedia(MediaInfo mediaInfo) {
         mListOfMedia.add(mediaInfo);
         addThumbnail(mediaInfo.getLoader().loadBitmap((Activity)getContext()));
         pagerAdapter.notifyDataSetChanged();
@@ -80,22 +80,22 @@ public class ScrollGalleryView extends LinearLayout {
      * @param i     a zero-based index
      * @return
      */
-    public ScrollGalleryView setCurrentItem(int i) {
+    public MediaGalleryView setCurrentItem(int i) {
         viewPager.setCurrentItem(i, false);
         return this;
     }
 
-    public ScrollGalleryView setThumbnailSize(int thumbnailSize) {
+    public MediaGalleryView setThumbnailSize(int thumbnailSize) {
         this.thumbnailSize = thumbnailSize;
         return this;
     }
 
-    public ScrollGalleryView setZoom(boolean zoomEnabled) {
+    public MediaGalleryView setZoom(boolean zoomEnabled) {
         this.zoomEnabled = zoomEnabled;
         return this;
     }
 
-    public ScrollGalleryView hideThumbnails(boolean thumbnailsHiddenEnabled) {
+    public MediaGalleryView hideThumbnails(boolean thumbnailsHiddenEnabled) {
         this.thumbnailsHiddenEnabled = thumbnailsHiddenEnabled;
         return this;
     }
@@ -124,7 +124,7 @@ public class ScrollGalleryView extends LinearLayout {
         return point;
     }
 
-    private ScrollGalleryView addThumbnail(Bitmap image) {
+    private MediaGalleryView addThumbnail(Bitmap image) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(thumbnailSize, thumbnailSize);
         lp.setMargins(10, 10, 10, 10);
         Bitmap thumbnail = createThumbnail(image);

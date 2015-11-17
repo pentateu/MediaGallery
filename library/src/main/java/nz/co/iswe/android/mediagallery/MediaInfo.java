@@ -40,14 +40,14 @@ public class MediaInfo {
                 && !isVideoURL(getURL());
     }
 
-    private boolean isImageURL(String url) {
+    public static boolean isImageURL(String url) {
         if(url != null){
             return IMAGE_FILES_REGEX.matcher(url).matches();
         }
         return false;
     }
 
-    private boolean isVideoURL(String url) {
+    public static boolean isVideoURL(String url) {
         if(url != null){
             return VIDEO_FILES_REGEX.matcher(url).matches();
         }

@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import nz.co.iswe.android.mediagallery.MediaInfo;
-import nz.co.iswe.android.mediagallery.ScrollGalleryView;
+import nz.co.iswe.android.mediagallery.MediaGalleryView;
 
 public class MainActivity extends FragmentActivity {
 
-    private ScrollGalleryView scrollGalleryView;
+    private MediaGalleryView mMediaGalleryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +20,8 @@ public class MainActivity extends FragmentActivity {
 
         Bitmap bitmap = convertDrawableToBitmap(R.drawable.wallpaper7);
 
-        scrollGalleryView = (ScrollGalleryView) findViewById(R.id.scroll_gallery_view);
-        scrollGalleryView
+        mMediaGalleryView = (MediaGalleryView) findViewById(R.id.scroll_gallery_view);
+        mMediaGalleryView
                 .setThumbnailSize(100)
                 .setZoom(true)
                 .setFragmentManager(getSupportFragmentManager())
