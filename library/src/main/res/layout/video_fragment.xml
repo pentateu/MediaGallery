@@ -10,6 +10,15 @@
             android:layout_gravity="center"
             android:id="@+id/videoView" />
 
+    <Button
+            android:layout_width="68dp"
+            android:layout_height="36dp"
+            android:text="Close"
+            android:id="@+id/close_button" android:layout_gravity="left|top"
+            android:background="#00ffffff" android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#ffffff"/>
+
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
